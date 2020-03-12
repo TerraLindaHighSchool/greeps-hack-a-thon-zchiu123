@@ -42,6 +42,7 @@ public class Greep extends Creature
         }
         if (carryingTomato()) 
         {
+            
             if (atShip()) {
                 dropTomato();
             }
@@ -72,7 +73,6 @@ public class Greep extends Creature
             
         }
     }
-    
     /**
      * Is there any food here where we are? If so, try to load some!
      */
