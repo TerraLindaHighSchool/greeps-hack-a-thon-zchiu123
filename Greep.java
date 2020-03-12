@@ -19,7 +19,6 @@ public class Greep extends Creature
     {
         this(null);
     }
-    
     /**
      * Create a Greep with its home space ship.
      */
@@ -27,45 +26,50 @@ public class Greep extends Creature
     {
         super(ship);
     }
-
     /**
      * Do what a greep's gotta do.
      */
     public void act()
     {
         super.act();   // do not delete! leave as first statement in act().
+         if (atWorldEdge())
+        {
+            turn(160);
+        }
+        if (atWater())
+        {
+            turn(160);
+        }
         if (carryingTomato()) 
         {
             if (atShip()) {
                 dropTomato();
             }
             else {
-                turnHome();
                 move();
-                checkFood();
+                turnHome();
+                if (atWater())
+                {
+                    turn(-2);
+                }
+                move();
             }
         }
         else {
-            //move();
+            
             checkFood();
         }
-        if (atWorldEdge())
-        {
-            turn(20);
-        }
-        if (atWater())
-        {
-            turn(70);
-        }
-        
         if (isTouching(TomatoPile.class))
         {
             spit("red)");
+            
         }
         else
         {
             move();
             //turnTowards(dq.getX(), dq.getY()));
+            
+            
         }
     }
     
@@ -92,7 +96,7 @@ public class Greep extends Creature
      */
     public static String getAuthorName()
     {
-        return "yeet";  // write your name here!
+        return "Zachary";  // write your name here!
     }
 
     /**
